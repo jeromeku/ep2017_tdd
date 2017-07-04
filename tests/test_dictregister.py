@@ -5,6 +5,11 @@ import collections
 from tdd import dictregister as dr
 
 
+@pytest.fixture
+def simple_dict():
+    return {'a': 1, 'b': 2}
+
+
 def test_init():
     dr.DictRegister()
 
@@ -29,3 +34,9 @@ def test_append_checks_if_mapping():
 
     with pytest.raises(TypeError):
         d.append([1, 2, 3, 4])
+
+
+def test_init_with_list_of_dicts(simple_dict):
+    d = dr.DictRegister([simple_dict])
+
+    assert len(d) == 1
