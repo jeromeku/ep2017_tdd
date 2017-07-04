@@ -39,8 +39,16 @@ class DictRegister(list):
 
     def kadd(self, key, value):
         for item in self:
-            item[key] = value
-
+            try:
+                # Use the key as a set
+                item[key].add(value)
+            except KeyError:
+                # This happens if the key is not present
+                item[key] = value
+            except AttributeError:
+                # This happens if the key is present but is not a set
+                item[key] = set([item[key], value])
+                
     def kremove(self, key):
         for item in self:
             item.pop(key, None)
