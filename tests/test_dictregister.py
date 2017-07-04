@@ -191,3 +191,11 @@ def test_remove_keyword_value_from_multiple_values():
 
     assert len(d) == 2
     assert d == dr.DictRegister([{'x': 6, 'y': 2}, {'x': 3, 'y': 4}])
+
+
+def test_remove_keyword_value_not_present_from_multiple_values():
+    d = dr.DictRegister([{'x': {2, 6}, 'y': 2}, {'x': 3, 'y': 4}])
+    d.kremove('x', 5)
+
+    assert len(d) == 2
+    assert d == dr.DictRegister([{'x': {2, 6}, 'y': 2}, {'x': 3, 'y': 4}])
