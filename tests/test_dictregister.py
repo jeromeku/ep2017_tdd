@@ -51,3 +51,13 @@ def test_equality():
 
     assert dr.DictRegister([{'a': 1, 'b': 2}]) != \
         dr.DictRegister([{'a': 1}])
+
+
+def test_find_single_key():
+    d = dr.DictRegister([
+        {'a': 1, 'b': 2},
+        {'a': 5, 'c': 6},
+        {'b': 3, 'c': 9}
+    ])
+
+    assert d.find('a') == dr.DictRegister([{'a': 1, 'b': 2}, {'a': 5, 'c': 6}])
