@@ -1,2 +1,8 @@
+import collections
+
+
 class DictRegister(list):
-    pass
+
+    def append(self, elem):
+        if not isinstance(elem, collections.Mapping):
+            raise TypeError
