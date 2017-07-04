@@ -36,3 +36,7 @@ class DictRegister(list):
             filtered_list = []
 
         return self.__class__(starting_list)
+
+    def kadd(self, key, value):
+        for item in self:
+            item[key] = value
