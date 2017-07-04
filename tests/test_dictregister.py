@@ -120,13 +120,25 @@ def test_find_unnamed_and_named():
     ])
 
 
-def test_find_greater_than():
+def test_find_explicit_equal():
     d = dr.DictRegister([
         {'a': 1, 'b': 2, 'c': 4},
         {'a': 5, 'b': 6, 'c': 4},
         {'b': 3, 'c': 9}
     ])
 
-    assert d.find(b__gt=3) == dr.DictRegister([
+    assert d.find(b__eq=6) == dr.DictRegister([
         {'a': 5, 'b': 6, 'c': 4}
     ])
+
+
+# def test_find_greater_than():
+#     d = dr.DictRegister([
+#         {'a': 1, 'b': 2, 'c': 4},
+#         {'a': 5, 'b': 6, 'c': 4},
+#         {'b': 3, 'c': 9}
+#     ])
+
+#     assert d.find(b__gt=3) == dr.DictRegister([
+#         {'a': 5, 'b': 6, 'c': 4}
+#     ])
