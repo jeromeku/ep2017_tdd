@@ -159,3 +159,11 @@ def test_remove_keyword():
 
     assert len(d) == 2
     assert d == dr.DictRegister([{'y': 2}, {'y': 4}])
+
+
+def test_remove_not_present_keyword():
+    d = dr.DictRegister([{'x': 1, 'y': 2, 'z': 8}, {'x': 3, 'y': 4}])
+    d.kremove('z')
+
+    assert len(d) == 2
+    assert d == dr.DictRegister([{'x': 1, 'y': 2}, {'x': 3, 'y': 4}])
