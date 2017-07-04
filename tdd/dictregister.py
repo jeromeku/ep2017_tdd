@@ -1,2 +1,2 @@
-class DictRegister:
+class DictRegister(list):
     pass
