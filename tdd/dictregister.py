@@ -23,5 +23,7 @@ class DictRegister(list):
             key, operator = k.split('__')
             if operator == 'eq':
                 result = [d for d in result if key in d and d[key] == v]
+            elif operator == 'gt':
+                result = [d for d in result if key in d and d[key] > v]
 
         return self.__class__(result)
