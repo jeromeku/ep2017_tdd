@@ -8,7 +8,7 @@ class DictRegister(list):
             raise TypeError
         super().append(elem)
 
-    def find(self, key):
+    def find(self, *args):
         return self.__class__(
-            [d for d in self if key in d]
+            [d for d in self if set(args).issubset(set(d.keys()))]
         )
