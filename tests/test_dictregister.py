@@ -142,3 +142,12 @@ def test_find_greater_than():
     assert d.find(b__gt=3) == dr.DictRegister([
         {'a': 5, 'b': 6, 'c': 4}
     ])
+
+
+def test_add_keyword():
+    d = dr.DictRegister([{'x': 1, 'y': 2}, {'x': 3, 'y': 4}])
+    d.kadd('z', 3)
+
+    assert len(d) == 2
+    assert d == dr.DictRegister(
+        [{'x': 1, 'y': 2, 'z': 3}, {'x': 3, 'y': 4, 'z': 3}])
