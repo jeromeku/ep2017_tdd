@@ -167,3 +167,11 @@ def test_remove_not_present_keyword():
 
     assert len(d) == 2
     assert d == dr.DictRegister([{'x': 1, 'y': 2}, {'x': 3, 'y': 4}])
+
+
+def test_add_already_present_keyword():
+    d = dr.DictRegister([{'x': 1, 'y': 2}])
+    d.kadd('x', 3)
+
+    assert len(d) == 1
+    assert d == dr.DictRegister([{'x': {1, 3}, 'y': 2}])
