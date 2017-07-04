@@ -8,22 +8,31 @@ class DictRegister(list):
             raise TypeError
         super().append(elem)
 
-    def find(self, *args, **kwargs):
-        result = self.__class__(
+    def _match(self, item, keyop, value):
+        # Split key and operator
+        if '__' not in keyop:
+            keyop = keyop + '__eq'
+        key, op = keyop.split('__')
+
+        if op == "eq":
+            try:
+                return item[key] == value
+            except KeyError:
+                return False
+        else:
+            return item[key] > value
+
+    def find(self, *args, **kwds):
+        starting_list = self.__class__(
             [d for d in self if set(args).issubset(set(d.keys()))]
         )
 
-        norm_kwargs = {}
-        for k, v in kwargs.items():
-            if '__' not in k:
-                k = k + '__eq'
-            norm_kwargs[k] = v
+        filtered_list = []
+        for key, value in kwds.items():
+            for item in starting_list:
+                if self._match(item, key, value):
+                    filtered_list.append(item)
+            starting_list = filtered_list
+            filtered_list = []
 
-        for k, v in norm_kwargs.items():
-            key, operator = k.split('__')
-            if operator == 'eq':
-                result = [d for d in result if key in d and d[key] == v]
-            elif operator == 'gt':
-                result = [d for d in result if key in d and d[key] > v]
-
-        return self.__class__(result)
+        return self.__class__(starting_list)
