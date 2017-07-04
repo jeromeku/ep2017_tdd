@@ -48,7 +48,11 @@ class DictRegister(list):
             except AttributeError:
                 # This happens if the key is present but is not a set
                 item[key] = set([item[key], value])
-                
-    def kremove(self, key):
+
+    def kremove(self, key, value=None):
         for item in self:
-            item.pop(key, None)
+            if value is None:
+                item.pop(key, None)
+            else:
+                if item[key] == value:
+                    item.pop(key)
