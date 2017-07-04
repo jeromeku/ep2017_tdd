@@ -64,6 +64,10 @@ class DictRegister(list):
                     # just store the latter
                     if len(item[key]) == 1:
                         item[key] = item[key].pop()
+                except KeyError:
+                    # This happens when the item
+                    # does not contain the key
+                    pass
                 except AttributeError:
                     # This happens when the key is not a set
                     # and shall be removed only if values match
