@@ -40,3 +40,14 @@ def test_init_with_list_of_dicts(simple_dict):
     d = dr.DictRegister([simple_dict])
 
     assert len(d) == 1
+
+
+def test_equality():
+    assert dr.DictRegister([{'a': 1, 'b': 2}]) == \
+        dr.DictRegister([{'a': 1, 'b': 2}])
+
+    assert dr.DictRegister([{'a': 1, 'b': 2}]) != \
+        dr.DictRegister([{'a': 3, 'b': 2}])
+
+    assert dr.DictRegister([{'a': 1, 'b': 2}]) != \
+        dr.DictRegister([{'a': 1}])
