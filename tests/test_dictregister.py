@@ -106,3 +106,15 @@ def test_find_multiple_key_values():
     assert d.find(a=1, c=4) == dr.DictRegister([
         {'a': 1, 'b': 2, 'c': 4}
     ])
+
+
+def test_find_unnamed_and_named():
+    d = dr.DictRegister([
+        {'a': 1, 'b': 2, 'c': 4},
+        {'a': 5, 'b': 6, 'c': 4},
+        {'b': 3, 'c': 9}
+    ])
+
+    assert d.find('a', b=6) == dr.DictRegister([
+        {'a': 5, 'b': 6, 'c': 4}
+    ])
