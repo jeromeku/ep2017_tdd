@@ -132,13 +132,13 @@ def test_find_explicit_equal():
     ])
 
 
-# def test_find_greater_than():
-#     d = dr.DictRegister([
-#         {'a': 1, 'b': 2, 'c': 4},
-#         {'a': 5, 'b': 6, 'c': 4},
-#         {'b': 3, 'c': 9}
-#     ])
+def test_find_greater_than():
+    d = dr.DictRegister([
+        {'a': 1, 'b': 2, 'c': 4},
+        {'a': 5, 'b': 6, 'c': 4},
+        {'b': 3, 'c': 9}
+    ])
 
-#     assert d.find(b__gt=3) == dr.DictRegister([
-#         {'a': 5, 'b': 6, 'c': 4}
-#     ])
+    assert d.find(b__gt=3) == dr.DictRegister([
+        {'a': 5, 'b': 6, 'c': 4}
+    ])
