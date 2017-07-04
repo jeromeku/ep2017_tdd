@@ -81,3 +81,16 @@ def test_find_single_key_value():
     ])
 
     assert d.find(a=1) == dr.DictRegister([{'a': 1, 'b': 2}])
+
+
+def test_find_single_key_value_multiple_results():
+    d = dr.DictRegister([
+        {'a': 1, 'b': 2, 'c': 4},
+        {'a': 5, 'b': 6, 'c': 4},
+        {'b': 3, 'c': 9}
+    ])
+
+    assert d.find(c=4) == dr.DictRegister([
+        {'a': 1, 'b': 2, 'c': 4},
+        {'a': 5, 'b': 6, 'c': 4}
+    ])
