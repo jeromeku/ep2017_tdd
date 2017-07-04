@@ -40,3 +40,7 @@ class DictRegister(list):
     def kadd(self, key, value):
         for item in self:
             item[key] = value
+
+    def kremove(self, key):
+        for item in self:
+            item.pop(key)
