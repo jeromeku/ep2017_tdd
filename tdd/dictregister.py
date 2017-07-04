@@ -43,4 +43,4 @@ class DictRegister(list):
 
     def kremove(self, key):
         for item in self:
-            item.pop(key)
+            item.pop(key, None)
