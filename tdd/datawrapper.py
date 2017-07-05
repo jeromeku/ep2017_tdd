@@ -7,8 +7,10 @@ class DataWrapper:
     def __init__(self):
         self.rest = RestService()
 
-    def list(self):
-        return DictRegister(self.rest.list())
+    def list(self, **kwds):
+        dr = DictRegister(self.rest.list())
+
+        return dr.find(**kwds)
 
     def get(self, elem_id):
         return self.rest.get(elem_id)
