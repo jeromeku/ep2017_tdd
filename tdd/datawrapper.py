@@ -1,2 +1,7 @@
+from tdd.rest_service import RestService
+
+
 class DataWrapper:
-    pass
+
+    def __init__(self):
+        self.rest = RestService()
