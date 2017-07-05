@@ -1,4 +1,4 @@
-from unittest.mock import patch, Mock
+from unittest.mock import patch, Mock, MagicMock
 
 from tdd import datawrapper as dw
 
@@ -24,7 +24,7 @@ def test_datawrapper_list_calls_list_method(mock_restservice):
 
 @patch('tdd.datawrapper.RestService')
 def test_datawrapper_list_returns_correct_data(mock_restservice):
-    test_data = [Mock()]
+    test_data = [MagicMock()]
 
     mock_restservice().list.return_value = test_data
 
