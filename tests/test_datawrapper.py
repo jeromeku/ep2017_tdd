@@ -45,51 +45,51 @@ def test_datawrapper_get_returns_correct_data(mock_restservice):
     mock_restservice().get.assert_called_with(1)
 
 
-@patch('tdd.datawrapper.RestService')
-def test_datawrapper_list_filter_age(mock_restservice):
-    test_data = [
-        {
-            "id": 1,
-            "name": "Laith",
-            "surname": "Simmons",
-            "age": 68,
-            "salary": "£27888"
-        },
-        {
-            "id": 2,
-            "name": "Mikayla",
-            "surname": "Henry",
-            "age": 49,
-            "salary": "£67137"
-        },
-        {
-            "id": 3,
-            "name": "Garth",
-            "surname": "Fields",
-            "age": 70,
-            "salary": "£70472"
-        }
-    ]
+# @patch('tdd.datawrapper.RestService')
+# def test_datawrapper_list_filter_age(mock_restservice):
+#     test_data = [
+#         {
+#             "id": 1,
+#             "name": "Laith",
+#             "surname": "Simmons",
+#             "age": 68,
+#             "salary": "£27888"
+#         },
+#         {
+#             "id": 2,
+#             "name": "Mikayla",
+#             "surname": "Henry",
+#             "age": 49,
+#             "salary": "£67137"
+#         },
+#         {
+#             "id": 3,
+#             "name": "Garth",
+#             "surname": "Fields",
+#             "age": 70,
+#             "salary": "£70472"
+#         }
+#     ]
 
-    expected_result = [
-        {
-            "id": 1,
-            "name": "Laith",
-            "surname": "Simmons",
-            "age": 68,
-            "salary": "£27888"
-        },
-        {
-            "id": 3,
-            "name": "Garth",
-            "surname": "Fields",
-            "age": 70,
-            "salary": "£70472"
-        }
-    ]
+#     expected_result = [
+#         {
+#             "id": 1,
+#             "name": "Laith",
+#             "surname": "Simmons",
+#             "age": 68,
+#             "salary": "£27888"
+#         },
+#         {
+#             "id": 3,
+#             "name": "Garth",
+#             "surname": "Fields",
+#             "age": 70,
+#             "salary": "£70472"
+#         }
+#     ]
 
-    mock_restservice().list.return_value = test_data
+#     mock_restservice().list.return_value = test_data
 
-    w = dw.DataWrapper()
+#     w = dw.DataWrapper()
 
-    assert w.list(age__gt=50) == expected_result
+#     assert w.list(age__gt=50) == expected_result
