@@ -8,3 +8,6 @@ class DataWrapper:
 
     def list(self):
         return self.rest.list()
+
+    def get(self, elem_id):
+        return self.rest.get(elem_id)
