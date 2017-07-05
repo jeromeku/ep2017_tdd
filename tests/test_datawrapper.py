@@ -53,3 +53,21 @@ def test_datawrapper_list_returns_correct_data(mock_restservice):
     w = dw.DataWrapper()
 
     assert w.list() == test_data
+
+
+@patch('tdd.datawrapper.RestService')
+def test_datawrapper_get_returns_correct_data(mock_restservice):
+    test_data = {
+        "id": 1,
+        "name": "Laith",
+        "surname": "Simmons",
+        "age": 68,
+        "salary": "£27888"
+    }
+
+    mock_restservice().get.return_value = test_data
+
+    w = dw.DataWrapper()
+
+    assert w.get(1) == test_data
+    mock_restservice().get.assert_called_with(1)
