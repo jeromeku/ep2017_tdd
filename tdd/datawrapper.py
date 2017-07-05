@@ -7,4 +7,4 @@ class DataWrapper:
         self.rest = RestService()
 
     def list(self):
-        return self.rest.list()
+        self.rest.list()
