@@ -7,7 +7,9 @@ class DataStats:
     def __init__(self, data):
         self.data = data
 
-    def stats(self, data, iage, isalary):
+    def stats(self, iage, isalary):
+        data = self.data
+        
         # Compute average yearly increase
         average_age_increase = math.floor(
             sum([e['age'] for e in data])/len(data)) - iage
