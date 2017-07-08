@@ -7,6 +7,9 @@ class DataStats:
     def __init__(self, data):
         self.data = data
 
+    def _age_avg(self):
+        return math.floor(sum([e['age'] for e in self.data])/len(self.data))
+
     def stats(self, iage, isalary):
         data = self.data
         
