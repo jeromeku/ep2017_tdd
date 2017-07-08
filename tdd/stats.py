@@ -4,6 +4,9 @@ import json
 
 class DataStats:
 
+    def __init__(self, data):
+        self.data = data
+
     def stats(self, data, iage, isalary):
         # Compute average yearly increase
         average_age_increase = math.floor(
