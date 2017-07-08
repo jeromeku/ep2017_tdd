@@ -1,10 +1,13 @@
+import pytest
+
 import json
 
 from tdd.stats import DataStats
 
 
-def test_json():
-    test_data = [
+@pytest.fixture
+def test_data():
+    return [
         {
             "id": 1,
             "name": "Laith",
@@ -28,6 +31,8 @@ def test_json():
         }
     ]
 
+
+def test_json(test_data):
     ds = DataStats()
 
     assert ds.stats(test_data, 20, 20000) == json.dumps(
