@@ -69,6 +69,18 @@ def test_max_salary(test_data):
     }]
 
 
+def test_min_salary(test_data):
+    ds = DataStats(test_data)
+
+    assert ds._min_salary() == [{
+        "id": 1,
+        "name": "Laith",
+        "surname": "Simmons",
+        "age": 68,
+        "salary": "£27888"
+    }]
+
+
 def test_json(test_data):
     ds = DataStats(test_data)
 
