@@ -39,8 +39,7 @@ class DataStats:
 
         return json.dumps({
             'avg_age': self._age_avg(),
-            'avg_salary': math.floor(sum(
-                [int(e['salary'][1:]) for e in data])/len(data)),
+            'avg_salary': self._salary_avg(),
             'avg_yearly_increase': yearly_avg_increase,
             'max_salary': max_salary,
             'min_salary': min_salary
