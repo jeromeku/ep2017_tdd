@@ -23,6 +23,12 @@ class DataStats:
 
         return math.floor(average_salary_increase/average_age_increase)
 
+    def _max_salary(self):
+        salaries = [int(e['salary'][1:]) for e in self.data]
+        threshold = '£' + str(max(salaries))
+
+        return [e for e in self.data if e['salary'] == threshold]
+
     def stats(self, iage, isalary):
         data = self.data
 
