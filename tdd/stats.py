@@ -2,37 +2,48 @@ import math
 import json
 
 
+def _avg(seq):
+    return math.floor(sum(seq)/len(seq))
+
+
 class DataStats:
 
     def __init__(self, data):
         self.data = data
 
+    @property
+    def _ages(self):
+        return [e['age'] for e in self.data]
+
+    @property
+    def _salaries(self):
+        return [int(e['salary'][1:]) for e in self.data]
+
     def _age_avg(self):
-        return math.floor(sum([e['age'] for e in self.data])/len(self.data))
+        return _avg(self._ages)
 
     def _salary_avg(self):
-        return math.floor(sum(
-            [int(e['salary'][1:]) for e in self.data])/len(self.data))
+        return _avg(self._salaries)
 
     def _yearly_avg_increase(self, iage, isalary):
-        average_age_increase = math.floor(
-            sum([e['age'] for e in self.data])/len(self.data)) - iage
-        average_salary_increase = math.floor(
-            sum([int(e['salary'][1:]) for e in self.data])/len(self.data)) - \
-            isalary
+        average_age_increase = self._age_avg() - iage
+        average_salary_increase = math.floor(self._salary_avg()) - isalary
 
         return math.floor(average_salary_increase/average_age_increase)
 
-    def _max_salary(self):
-        salaries = [int(e['salary'][1:]) for e in self.data]
-        threshold = '£' + str(max(salaries))
+    def _salary_str(self, salary):
+        return '£' + salary
+
+    def _select_salary(self, salary):
+        threshold = self._salary_str(str(salary))
 
         return [e for e in self.data if e['salary'] == threshold]
 
+    def _max_salary(self):
+        return self._select_salary(max(self._salaries))
+
     def _min_salary(self):
-        salaries = [int(d['salary'][1:]) for d in self.data]
-        return [e for e in self.data if e['salary'] ==
-                '£{}'.format(str(min(salaries)))]
+        return self._select_salary(min(self._salaries))
 
     def stats(self, iage, isalary):
         return json.dumps({
