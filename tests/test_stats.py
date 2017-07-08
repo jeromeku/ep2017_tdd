@@ -51,6 +51,12 @@ def test_salary_avg(test_data):
     assert ds._salary_avg() == 55165
 
 
+def test_yearly_avg_increase(test_data):
+    ds = DataStats(test_data)
+
+    assert ds._yearly_avg_increase(20, 20000) == 837
+
+
 def test_json(test_data):
     ds = DataStats(test_data)
 
