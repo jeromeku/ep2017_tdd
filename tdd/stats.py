@@ -35,17 +35,10 @@ class DataStats:
                 '£{}'.format(str(min(salaries)))]
 
     def stats(self, iage, isalary):
-        data = self.data
-
-        # Compute min salary
-        salaries = [int(d['salary'][1:]) for d in data]
-        min_salary = [e for e in data if e['salary'] ==
-                      '£{}'.format(str(min(salaries)))]
-
         return json.dumps({
             'avg_age': self._age_avg(),
             'avg_salary': self._salary_avg(),
             'avg_yearly_increase': self._yearly_avg_increase(iage, isalary),
             'max_salary': self._max_salary(),
-            'min_salary': min_salary
+            'min_salary': self._min_salary()
         })
