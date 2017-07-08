@@ -29,6 +29,11 @@ class DataStats:
 
         return [e for e in self.data if e['salary'] == threshold]
 
+    def _min_salary(self):
+        salaries = [int(d['salary'][1:]) for d in self.data]
+        return [e for e in self.data if e['salary'] ==
+                '£{}'.format(str(min(salaries)))]
+
     def stats(self, iage, isalary):
         data = self.data
 
