@@ -39,6 +39,12 @@ def test_init_with_data(test_data):
     assert len(ds.data) == 3
 
 
+def test_age_avg(test_data):
+    ds = DataStats(test_data)
+
+    assert ds._age_avg() == 62
+
+
 def test_json(test_data):
     ds = DataStats(test_data)
 
