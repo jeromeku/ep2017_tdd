@@ -34,7 +34,7 @@ class DataStats:
                       '£{}'.format(str(min(salaries)))]
 
         return json.dumps({
-            'avg_age': math.floor(sum([e['age'] for e in data])/len(data)),
+            'avg_age': self._age_avg(),
             'avg_salary': math.floor(sum(
                 [int(e['salary'][1:]) for e in data])/len(data)),
             'avg_yearly_increase': yearly_avg_increase,
