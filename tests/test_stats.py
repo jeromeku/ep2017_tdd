@@ -57,6 +57,18 @@ def test_yearly_avg_increase(test_data):
     assert ds._yearly_avg_increase(20, 20000) == 837
 
 
+def test_max_salary(test_data):
+    ds = DataStats(test_data)
+
+    assert ds._max_salary() == [{
+        "id": 3,
+        "name": "Garth",
+        "surname": "Fields",
+        "age": 70,
+        "salary": "£70472"
+    }]
+
+
 def test_json(test_data):
     ds = DataStats(test_data)
 
